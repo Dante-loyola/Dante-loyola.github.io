@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Búsqueda de Películas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    #resultados {
+      margin-top: 20px;
+    }
+
+    .pelicula {
+      display: flex;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .pelicula h2 {
+      margin-right: 10px;
+    }
+
+    .pelicula .descripcion {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .pelicula img {
+      max-width: 200px;
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Búsqueda de Películas</h1>
+
+  <div>
+    <input type="text" id="searchInput" placeholder="Buscar una película" onkeydown="handleKeyDown(event)">
+  </div>
+
+  <div id="resultados">
+    <!-- Los resultados de búsqueda se mostrarán aquí -->
+  </div>
+
+  <script>
+    // Función para realizar la búsqueda de películas
+    function search() {
+      var input = document.getElementById("searchInput").value;
+      // Aquí puedes implementar la lógica de búsqueda y mostrar los resultados en la sección "resultados"
+      
+      // Ejemplo de cómo agregar resultados de búsqueda a la sección "resultados"
+      var resultadosDiv = document.getElementById("resultados");
+      
+      // Ejemplo de resultado de búsqueda
+      var pelicula = {
+        titulo: "Título de la película",
+        descripcion: "Descripción de la película",
+        cartel: "URL del cartel de la película",
+        video: "URL del video de la película"
+      };
+      
+      // Crear elementos HTML para mostrar el resultado de búsqueda
+      var peliculaDiv = document.createElement("div");
+      peliculaDiv.classList.add("pelicula");
+      
+      var cartelImg = document.createElement("img");
+      cartelImg.src = pelicula.cartel;
+      peliculaDiv.appendChild(cartelImg);
+      
+      var tituloElement = document.createElement("h2");
+      tituloElement.textContent = pelicula.titulo;
+      peliculaDiv.appendChild(tituloElement);
+      
+      var descripcionElement = document.createElement("div");
+      descripcionElement.classList.add("descripcion");
+      descripcionElement.textContent = pelicula.descripcion;
+      peliculaDiv.appendChild(descripcionElement);
+      
+      cartelImg.addEventListener("click", function() {
+        window.location.href = pelicula.video;
+      });
+      
+      // Agregar el elemento de la película al contenedor de resultados
+      resultadosDiv.appendChild(peliculaDiv);
+    }
+    
+    function handleKeyDown(event) {
+      if (event.keyCode === 13) {
+        search();
+      }
+    }
+  </script>
+</body>
+</html>

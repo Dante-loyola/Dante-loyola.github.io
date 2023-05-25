@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>adobe cloud</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            background-color: #000000;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #262626;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .box:hover {
+            transform: translateY(-4px);
+        }
+
+        .box h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #00c4ff;
+        }
+
+        .box p {
+            font-size: 16px;
+            margin: 0;
+            color: #cccccc;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #00c4ff;
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 196, 255, 0.3);
+        }
+
+        .button:hover {
+            background-color: #0099cc;
+            box-shadow: 0 6px 12px rgba(0, 196, 255, 0.5);
+        }
+
+        /* Estilos para el modo oscuro */
+        .box.dark-mode {
+            background-color: #111111;
+        }
+
+        .box.dark-mode h2 {
+            color: #00c4ff;
+        }
+
+        .box.dark-mode p {
+            color: #cccccc;
+        }
+
+        .button.dark-mode {
+            background-color: #0099cc;
+            box-shadow: 0 4px 8px rgba(0, 196, 255, 0.3);
+        }
+
+        .button.dark-mode:hover {
+            background-color: #0077b3;
+            box-shadow: 0 6px 12px rgba(0, 196, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Adobe Photoshop 2021 - Software</h2>
+            <p>Adobe Photoshop: Software de edición de imágenes líder en la industria - 2021,
+                Un mundo de edición al alcance de tu mano.</p>
+            <div class="button-container">
+                <a class="button" href="adobe/adobe photoshop.html">descarga aqui</a>
+                <a class="button" href="photoshop videos/tutoriales.html">tutoriales de photoshop</a>
+            </div>
+        </div>
+        <div class="box">
+            <h2>Adobe XD 2022 47.0.22</h2>
+            <p>Adobe XD 2022 47.0.22:
+                Diseño interactivo, experiencias que cautivan.</p>
+            <div class="button-container">
+                <a class="button" href="adobe/Adobe XD 2022 47.0.22.html">descarga aqui</a>
+            </div>
+        </div>
+        <div class="box">
+            <h2>Adobe Premiere Pro 2023</h2>
+            <p>Texto de ejemplo para el cuadro 3.</p>
+            <div class="button-container">
+                <a class="button" href="adobe/Adobe XD 2022 47.0.22.html">descarga aqui</a>
+            </div>
+        </div>
+        <div class="box">
+            <h2>Título del cuadro 4</h2>
+            <p>Texto de ejemplo para el cuadro 4.</p>
+            <div class="button-container">
+                <a class="button" href="pagina4.html">descarga aqui</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        // Función para alternar el modo oscuro
+        function toggleDarkMode() {
+            const body = document.querySelector('body');
+            body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+
+</html>
