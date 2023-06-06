@@ -180,14 +180,14 @@ Parte_{i+1}.mp4". Puedes ajustar esta lógica de nombres de archivo según tus n
     <button class="copy-button" id="copyButton1" onclick="copyCode('codeContainer1', 'copyButton1')">code copy</button>
   </div>  
 <!-- ------------------------------------------fila 2---------------------------------------------------------- -->
-<div class="code-container" id="codeContainer5" data-speed="0.5">
+<div class="code-container" id="codeContainer1" data-speed="0.5">
   <div class="language">La biblioteca tkinter es la biblioteca estándar de Python para crear interfaces gráficas de usuario. Por lo general, ya está incluida en las instalaciones estándar de Python, por lo que no deberías tener que instalarla por separado.</div>
   <pre class="code">
     <code>
       pip install tk
     </code>
   </pre>
-  <button class="copy-button" id="copyButton5" onclick="copyCode('codeContainer5', 'copyButton5')">code copy</button>
+  <button class="copy-button" id="copyButton1" onclick="copyCode('codeContainer1', 'copyButton1')">code copy</button>
 </div>
 
 
@@ -208,74 +208,73 @@ Parte_{i+1}.mp4". Puedes ajustar esta lógica de nombres de archivo según tus n
 <div class="code-container" id="codeContainer3" data-speed="0.1">
   <div class="language">Python</div>
   <pre class="code">
-    <code>     
+    <code>
+from tkinter import filedialog  # Importar el módulo filedialog de tkinter para abrir una ventana de selección de archivos
+from moviepy.editor import VideoFileClip  # Importar la clase VideoFileClip del módulo moviepy.editor
+import tkinter as tk  # Importar el módulo tkinter y renombrarlo como tk
 
-      from tkinter import filedialog
-      from moviepy.editor import VideoFileClip
-      import tkinter as tk
-      
-      def seleccionar_video():
-          archivo_video = filedialog.askopenfilename(filetypes=[("Archivos de video", "*.mp4")])
-          entry_video.delete(0, tk.END)
-          entry_video.insert(0, archivo_video)
-      
-      def recortar_video():
-          nombre_video = entry_video.get()
-          duracion_clip = int(entry_duracion.get())
-      
-          video = VideoFileClip(nombre_video)
-          duracion_total = video.duration
-      
-          # Calcula la cantidad de clips que se pueden obtener
-          cantidad_clips = int(duracion_total / duracion_clip)
-      
-          lbl_resultado.config(text=f"Se generarán {cantidad_clips} clips de {duracion_clip} segundos cada uno")
-      
-          for i in range(cantidad_clips):
-              tiempo_inicio = i * duracion_clip
-              tiempo_fin = (i + 1) * duracion_clip
-              nombre_salida = f"(11) Guardianes de la Galaxia (2014) Parte_{i+1}.mp4"
-      
-              clip_recortado = video.subclip(tiempo_inicio, tiempo_fin)
-              clip_recortado.write_videofile(nombre_salida, codec="libx264", threads=4, preset="ultrafast")
-      
-          video.close()
-          lbl_resultado.config(text="Recorte completado")
-      
-      # Crear ventana
-      ventana = tk.Tk()
-      ventana.title("Video Cutter")
-      
-      # Etiqueta y campo de entrada para el video
-      lbl_video = tk.Label(ventana, text="Video:")
-      lbl_video.grid(row=0, column=0, padx=10, pady=10)
-      entry_video = tk.Entry(ventana)
-      entry_video.grid(row=0, column=1, padx=10, pady=10)
-      btn_seleccionar = tk.Button(ventana, text="Seleccionar", command=seleccionar_video)
-      btn_seleccionar.grid(row=0, column=2, padx=10, pady=10)
-      
-      # Etiqueta y campo de entrada para la duración de cada clip
-      lbl_duracion = tk.Label(ventana, text="Duración de cada clip (segundos):")
-      lbl_duracion.grid(row=1, column=0, padx=10, pady=10)
-      entry_duracion = tk.Entry(ventana)
-      entry_duracion.grid(row=1, column=1, padx=10, pady=10)
-      
-      # Botón de recorte
-      btn_recortar = tk.Button(ventana, text="Recortar", command=recortar_video)
-      btn_recortar.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
-      
-      # Etiqueta para mostrar el resultado
-      lbl_resultado = tk.Label(ventana, text="")
-      lbl_resultado.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
-      
-      # Iniciar la interfaz
-      ventana.mainloop()
-      
-            
-          </code>
+def seleccionar_video():
+    archivo_video = filedialog.askopenfilename(filetypes=[("Archivos de video", "*.mp4")])  # Abrir ventana de selección de archivos de video
+    entry_video.delete(0, tk.END)  # Borrar el contenido actual del campo de entrada de video
+    entry_video.insert(0, archivo_video)  # Insertar la ruta del archivo seleccionado en el campo de entrada
+
+def recortar_video():
+    nombre_video = entry_video.get()  # Obtener la ruta del video ingresada en el campo de entrada
+    duracion_clip = int(entry_duracion.get())  # Obtener la duración de cada clip ingresada en el campo de entrada y convertirla a entero
+
+    video = VideoFileClip(nombre_video)  # Crear un objeto VideoFileClip a partir del video seleccionado
+    duracion_total = video.duration  # Obtener la duración total del video
+
+    # Calcula la cantidad de clips que se pueden obtener
+    cantidad_clips = int(duracion_total / duracion_clip)
+
+    lbl_resultado.config(text=f"Se generarán {cantidad_clips} clips de {duracion_clip} segundos cada uno")  # Mostrar la cantidad de clips que se generarán en la etiqueta lbl_resultado
+
+    for i in range(cantidad_clips):
+        tiempo_inicio = i * duracion_clip  # Calcular el tiempo de inicio del clip actual
+        tiempo_fin = (i + 1) * duracion_clip  # Calcular el tiempo de fin del clip actual
+        nombre_salida = f"Dr Stone #drstone #anime #fyp #viral Parte_{i+1}.mp4"  # Generar el nombre del archivo de salida para el clip actual
+
+        clip_recortado = video.subclip(tiempo_inicio, tiempo_fin)  # Obtener el clip recortado dentro del rango de tiempo especificado
+        clip_recortado.write_videofile(nombre_salida, codec="libx264", threads=4, preset="ultrafast")  # Escribir el clip recortado en un archivo de video con el nombre especificado
+
+    video.close()  # Cerrar el objeto VideoFileClip
+    lbl_resultado.config(text="Recorte completado")  # Mostrar un mensaje de finalización en la etiqueta lbl_resultado
+
+# Crear ventana
+ventana = tk.Tk()  # Crear una nueva instancia de la clase Tk de tkinter
+ventana.title("Video Cutter")  # Establecer el título de la ventana
+
+# Etiqueta y campo de entrada para el video
+lbl_video = tk.Label(ventana, text="Video:")  # Crear una etiqueta con el texto "Video:"
+lbl_video.grid(row=0, column=0, padx=10, pady=10)  # Ubicar la etiqueta en la primera fila y primera columna de la cuadrícula
+entry_video = tk.Entry(ventana)  # Crear un campo de entrada para el video
+entry_video.grid(row=0, column=1, padx=10, pady=10)  # Ubicar el campo de entrada en la primera fila y segunda columna de la cuadrícula
+btn_seleccionar = tk.Button(ventana, text="Seleccionar", command=seleccionar_video)  # Crear un botón con el texto "Seleccionar" y asociarlo a la función seleccionar_video
+btn_seleccionar.grid(row=0, column=2, padx=10, pady=10)  # Ubicar el botón en la primera fila y tercera columna de la cuadrícula
+
+# Etiqueta y campo de entrada para la duración de cada clip
+lbl_duracion = tk.Label(ventana, text="Duración de cada clip (segundos):")  # Crear una etiqueta con el texto "Duración de cada clip (segundos):"
+lbl_duracion.grid(row=1, column=0, padx=10, pady=10)  # Ubicar la etiqueta en la segunda fila y primera columna de la cuadrícula
+entry_duracion = tk.Entry(ventana)  # Crear un campo de entrada para la duración de cada clip
+entry_duracion.grid(row=1, column=1, padx=10, pady=10)  # Ubicar el campo de entrada en la segunda fila y segunda columna de la cuadrícula
+
+# Botón de recorte
+btn_recortar = tk.Button(ventana, text="Recortar", command=recortar_video)  # Crear un botón con el texto "Recortar" y asociarlo a la función recortar_video
+btn_recortar.grid(row=2, column=0, columnspan=2, padx=10, pady=10)  # Ubicar el botón en la tercera fila y ocupar las dos primeras columnas de la cuadrícula
+
+# Etiqueta para mostrar el resultado
+lbl_resultado = tk.Label(ventana, text="")  # Crear una etiqueta vacía para mostrar el resultado
+lbl_resultado.grid(row=3, column=0, columnspan=2, padx=10, pady=10)  # Ubicar la etiqueta en la cuarta fila y ocupar las dos primeras columnas de la cuadrícula
+
+# Iniciar la interfaz
+ventana.mainloop()  # Iniciar el ciclo principal de la ventana
+
+</code>
   </pre>
   <button class="copy-button" id="copyButton3" onclick="copyCode('codeContainer3', 'copyButton3')">code copy</button>
 </div>
+
 <!-- ---------------------------------------------------------------------------------------------------- -->
 <div class="footer">
   <div class="icon-container center">

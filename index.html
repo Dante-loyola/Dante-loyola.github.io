@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Mi Página Web</title>
   <style>
     /* Estilos generales */
     body {
-      background-color: #1f1f1f;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
+      background-color: #1f1f1f; /* Color de fondo del cuerpo de la página */
+      color: #ffffff; /* Color del texto */
+      font-family: Arial, sans-serif; /* Fuente utilizada */
       margin: 0;
       padding: 0;
     }
 
     /* Modo oscuro */
     body.dark-mode {
-      background-color: #000000;
+      background-color: #000000; /* Color de fondo en el modo oscuro */
     }
 
     .container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-      min-height: 100vh;
+      justify-content: center; /* Ajusta para centrar horizontalmente */
+      align-items: flex-start; /* Alinea los cuadros en la parte superior */
+      min-height: calc(100vh - 100px); /* Ajusta la altura mínima de acuerdo al campo de búsqueda */
       padding: 20px;
     }
 
     .row {
-      width: 100%;
+      width: 100%; /* Ocupa todo el ancho disponible */
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: center; /* Centra los cuadros horizontalmente */
       margin-bottom: 20px;
     }
 
     .box {
-      flex-basis: calc(33.33% - 20px);
-      /* Ajusta este valor para definir el ancho de los cuadros */
+      flex-basis: calc(50% - 20px); /* Ajusta el tamaño de los cuadros */
       padding: 20px;
-      background-color: #262626;
+      background-color: #262626; /* Color de fondo de los cuadros */
       margin: 0 10px 10px 0;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       border-radius: 4px;
@@ -59,13 +56,13 @@
       margin-top: 0;
       margin-bottom: 10px;
       font-size: 20px;
-      color: #00c4ff;
+      color: #00c4ff; /* Color del título del cuadro */
     }
 
     .box p {
       font-size: 16px;
       margin: 0;
-      color: #cccccc;
+      color: #cccccc; /* Color del texto del cuadro */
     }
 
     .button-container {
@@ -76,8 +73,8 @@
 
     .button {
       padding: 10px 20px;
-      background-color: #00c4ff;
-      color: #ffffff;
+      background-color: #00c4ff; /* Color de fondo del botón */
+      color: #ffffff; /* Color del texto del botón */
       text-decoration: none;
       margin: 0 10px;
       border: none;
@@ -88,30 +85,30 @@
     }
 
     .button:hover {
-      background-color: #0099cc;
+      background-color: #0099cc; /* Color de fondo del botón al pasar el cursor */
       box-shadow: 0 6px 12px rgba(0, 196, 255, 0.5);
     }
 
     /* Estilos para el modo oscuro */
     .box.dark-mode {
-      background-color: #111111;
+      background-color: #111111; /* Color de fondo de los cuadros en el modo oscuro */
     }
 
     .box.dark-mode h2 {
-      color: #00c4ff;
+      color: #00c4ff; /* Color del título del cuadro en el modo oscuro */
     }
 
     .box.dark-mode p {
-      color: #cccccc;
+      color: #cccccc; /* Color del texto del cuadro en el modo oscuro */
     }
 
     .button.dark-mode {
-      background-color: #0099cc;
+      background-color: #0099cc; /* Color de fondo del botón en el modo oscuro */
       box-shadow: 0 4px 8px rgba(0, 196, 255, 0.3);
     }
 
     .button.dark-mode:hover {
-      background-color: #0077b3;
+      background-color: #0077b3; /* Color de fondo del botón al pasar el cursor en el modo oscuro */
       box-shadow: 0 6px 12px rgba(0, 196, 255, 0.5);
     }
 
@@ -119,43 +116,163 @@
     .box {
       transition: transform 0.3s ease, background-color 0.3s ease;
     }
+
+    /* Estilos para el campo de búsqueda */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Alinea los elementos en la parte superior */
+      margin-top: 0; /* Mueve el campo de búsqueda a la parte superior */
+      margin-bottom: 1px;
+    }
+
+    .search-input {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-size: 16px;
+      width: 300px;
+    }
+
+    /* Estilos para el botón de búsqueda */
+    .search-button {
+      padding: 10px 20px;
+      background-color: #00c4ff; /* Color de fondo del botón */
+      color: #ffffff; /* Color del texto del botón */
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 196, 255, 0.3);
+    }
+
+    .search-button:hover {
+      background-color: #0099cc; /* Color de fondo del botón al pasar el cursor */
+      box-shadow: 0 6px 12px rgba(0, 196, 255, 0.5);
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      padding: 10px 20px;
+      background-color: #00c4ff; /* Color de fondo de los elementos del menú */
+      color: #ffffff; /* Color del texto de los elementos del menú */
+      text-decoration: none;
+      margin: 0 10px;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 196, 255, 0.3);
+    }
+
+    .menu-item:hover {
+      background-color: #0099cc; /* Color de fondo de los elementos del menú al pasar el cursor */
+      box-shadow: 0 6px 12px rgba(0, 196, 255, 0.5);
+    }
+
   </style>
 </head>
-<!-- ------------------------------------------fila 1---------------------------------------------------------- -->
 <body>
   <div class="container">
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Buscar por título o descripción" onkeypress="handleKeyPress(event)">
+      <button class="search-button" onclick="search()">Buscar</button>
+    </div>
+
+    <!-- Menú -->
+    <div class="menu">
+      <a class="menu-item" href="#section1">Sección 1</a>
+      <a class="menu-item" href="#section2">Sección 2</a>
+      <a class="menu-item" href="#section3">Sección 3</a>
+      <a class="menu-item" href="#section4">Sección 4</a>
+    </div>
+    
+
     <div class="row">
-      <div class="box">
+      <div class="box" data-category="Adobe Cloud">
         <h2>Adobe Cloud</h2>
         <p>En esta página estarán varias de las herramientas de edición de Adobe Cloud</p>
         <div class="button-container">
-          <a class="button" href="botones/adobes cloud.html">clic aqui</a>
+          <a class="button" href="botones/adobes cloud.html">clic aqui</a> 
         </div>
       </div>
-      <div class="box">
+      <div class="box" data-category="Cut Video Player">
         <h2>Cut Video Player</h2>
         <p>Permite al usuario recortar un video en clips más pequeños según la duración especificada.</p>
         <div class="button-container">
           <a class="button" href="video cuter/video cuter.html">clic aqui</a>
         </div>
       </div>
-      <div class="box">
-        <h2>Navegadores Web</h2>
-        <p>Esta página podrás descargar los mejores navegadores que más te agraden</p>
+    </div>
+    <!-- ----------------- Línea de comentario ----------------- -->
+    <div class="row">
+      <div class="box" data-category="Navegadores Download">
+        
+        <h2>Navegadores Download</h2>
+        <p>Esta pagina Estan los mejores navegadores para que puedas descargar de manera más rapida</p>
         <div class="button-container">
-          <a class="button" href="navegadores/navegadores.html">clic aqui</a>
+          <a class="button" href="navegadores/navegadores.html">Clic aquí</a>
+        </div>
+      </div>
+      <div class="box" data-category="Otro Cuadro">
+        <h2>Otro Cuadro</h2>
+        <p>Descripción del otro cuadro</p>
+        <div class="button-container">
+          <a class="button" href="#">Clic aquí</a>
         </div>
       </div>
     </div>
-
-<!-- ------------------------------------------fila 1---------------------------------------------------------- -->
-    <!-- Agrega más cuadros aquí si es necesario -->
+    <!-- ----------------- Línea de comentario ----------------- -->
+    
+    <div id="searchResult" class="search-result"></div>
   </div>
   <script>
     // Función para alternar el modo oscuro
     function toggleDarkMode() {
       const body = document.querySelector('body');
       body.classList.toggle('dark-mode');
+    }
+
+    // Función para manejar el evento keypress del campo de búsqueda
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        search();
+      }
+    }
+
+    // Función de búsqueda
+    function search() {
+      const searchInput = document.getElementById('searchInput');
+      const searchTerm = searchInput.value.toLowerCase();
+      const boxes = document.getElementsByClassName('box');
+      let found = false;
+
+      for (let i = 0; i < boxes.length; i++) {
+        const box = boxes[i];
+        const title = box.querySelector('h2').innerText.toLowerCase();
+        const description = box.querySelector('p').innerText.toLowerCase();
+        const category = box.getAttribute('data-category').toLowerCase();
+
+        if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+          box.style.display = 'flex';
+          found = true;
+        } else {
+          box.style.display = 'none';
+        }
+      }
+
+      const searchResult = document.getElementById('searchResult');
+      if (found) {
+        searchResult.innerText = '';
+      } else {
+        searchResult.innerText = 'Resultado no encontrado';
+      }
     }
   </script>
   <div class="footer">
@@ -166,7 +283,5 @@
       </a>
     </div>
   </div>
-  
 </body>
-
 </html>
